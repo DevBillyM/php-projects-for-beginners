@@ -61,3 +61,9 @@ Clone this repository using:
 ```bash
 git clone https://github.com/codementoruk/php-projects-for-beginners
 ```
+
+Contributing
+Feel free to fork the repository and submit pull requests. You can also open an issue for bugs, suggestions, or new project ideas
+
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
