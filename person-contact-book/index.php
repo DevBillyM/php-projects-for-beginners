@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 define('PROJECT_ROOT', dirname(__FILE__));
 include_once(PROJECT_ROOT . '/functions/functions.php'); 
 $contacts = getAllContacts();
@@ -26,6 +22,7 @@ $contacts = getAllContacts();
         <table class="mt-6 w-full">
             <thead class="bg-gray-100">
                 <tr>
+                    <th class="p-3 text-left">id</th>
                     <th class="p-3 text-left">Name</th>
                     <th class="p-3 text-left">Phone</th>
                     <th class="p-3 text-left">Email</th>
@@ -36,6 +33,7 @@ $contacts = getAllContacts();
                 <?php if ($contacts->num_rows > 0) { ?>
                     <?php while ($row = $contacts->fetch_assoc()) { ?>
                         <tr>
+                            <td class="p-3"><?php echo $row['id']; ?></td>
                             <td class="p-3"><?php echo $row['name']; ?></td>
                             <td class="p-3"><?php echo $row['phone']; ?></td>
                             <td class="p-3"><?php echo $row['email']; ?></td>

@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 define('PROJECT_ROOT', dirname(__FILE__)); 
 include_once('functions/functions.php'); 
 
