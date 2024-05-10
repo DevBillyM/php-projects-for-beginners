@@ -1,29 +1,17 @@
-CREATE TABLE users (
-    userID INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL, 
-    role ENUM('admin', 'author', 'subscriber') DEFAULT 'subscriber', 
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+CREATE DATABASE IF NOT EXISTS blog_comments;
+USE blog_comments;
 
-CREATE TABLE comments (
-	commentID INT PRIMARY KEY AUTO_INCREMENT,
-    postID INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255),
+CREATE TABLE IF NOT EXISTS comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
     comment TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (postID) REFERENCES blog_posts(postID)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE blog_posts (
-    postID INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    slug VARCHAR(255) UNIQUE NOT NULL,  
     content TEXT NOT NULL,
-    authorID INT NOT NULL, 
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status ENUM('published', 'draft') DEFAULT 'draft', 
-    FOREIGN KEY (authorID) REFERENCES users(userID) 
-);  
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

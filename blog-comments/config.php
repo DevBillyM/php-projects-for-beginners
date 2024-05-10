@@ -1,12 +1,19 @@
 <?php
+$host = 'localhost';
+$db   = 'blog_comments';
+$user = 'root'; // Update with your MySQL username
+$pass = ''; // Update with your MySQL password
+$charset = 'utf8mb4';
 
-$db_host = 'localhost';
-$db_user = 'root';
-$db_pass = '';
-$db_name = 'blogposts';
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
-$conn = mysqli_connect($db_host, $db_name, $db_pass, $db_user);
-
-if (!$conn) {
-    die('Connection failed: ' . mysqli_connect_error());
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
