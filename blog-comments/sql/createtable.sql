@@ -26,4 +26,4 @@ CREATE TABLE blog_posts (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     status ENUM('published', 'draft') DEFAULT 'draft', 
     FOREIGN KEY (authorID) REFERENCES users(userID) 
-); 
+);  
